@@ -20,7 +20,7 @@ This repository packages a **Claude Agent Skill** that teaches Claude (in [Claud
 
 It follows Anthropic's [progressive-disclosure](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) authoring model: a lean `SKILL.md` that Claude loads on demand, plus per-domain reference files it opens only when needed. Every enum integer was reconciled against the **live SUMIT Swagger** (API v1/v3), and the whole skill was verified with an automated retrieval test.
 
-> **SUMIT** (formerly **OfficeGuy** / מיי אופיס גай) is one of Israel's leading billing, invoicing, payments, and accounting platforms. Base URL: `https://api.sumit.co.il`.
+> **SUMIT** (formerly **OfficeGuy** / אופיס-גיא) is one of Israel's leading billing, invoicing, payments, and accounting platforms. Base URL: `https://api.sumit.co.il`.
 
 ## Why it exists
 
