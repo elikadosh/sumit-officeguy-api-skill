@@ -1,0 +1,35 @@
+<!--
+  payments.js client tokenization template.
+  Card data never touches your server: payments.js tokenizes with the PUBLIC key
+  and injects a hidden `og-token`. Submit that token to your server as `SingleUseToken`.
+  Requires jQuery (payments.js depends on it).
+-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://app.sumit.co.il/scripts/payments.js"></script>
+
+<form id="og-form" data-og="form" method="post" action="/api/checkout">
+  <div class="og-errors"></div>
+
+  <label>Card number   <input type="text" data-og="cardnumber" autocomplete="cc-number" /></label>
+  <label>Exp. month    <input type="text" data-og="expirationmonth" autocomplete="cc-exp-month" placeholder="MM" /></label>
+  <label>Exp. year     <input type="text" data-og="expirationyear" autocomplete="cc-exp-year" placeholder="YYYY" /></label>
+  <label>CVV           <input type="text" data-og="cvv" autocomplete="cc-csc" /></label>
+  <label>ID / ת"ז      <input type="text" data-og="citizenid" /></label>
+
+  <button type="submit">Pay</button>
+</form>
+
+<script>
+jQuery(function () {
+  OfficeGuy.Payments.BindFormSubmit({
+    // Public, browser-safe credentials only:
+    CompanyID: Number(window.NEXT_PUBLIC_SUMIT_COMPANY_ID), // or inline your CompanyID
+    APIPublicKey: window.NEXT_PUBLIC_SUMIT_PUBLIC_KEY,       // or inline your public key
+  });
+  // On submit, payments.js adds <input name="og-token"> to the form.
+  // If you POST via fetch instead, read it after tokenization:
+  //   const token = document.querySelector('[name="og-token"]').value;
+  //   fetch('/api/checkout', { method:'POST', headers:{'Content-Type':'application/json'},
+  //     body: JSON.stringify({ singleUseToken: token, customer, items }) });
+});
+</script>
